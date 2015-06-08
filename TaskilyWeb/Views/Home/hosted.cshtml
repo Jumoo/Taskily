@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Taskily as a service";
+    Layout = "~/Views/Shared/_layoutheader.cshtml";
+}
+
+@section Heading {
+    <h2>@ViewBag.Title</h2>
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        @Html.ContentBlob("taskily/hosted/content_before")
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+        @Html.Partial("_featuretable", null)
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+        @Html.ContentBlob("taskily/hosted/content_after")
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@if (Model.Responses.Count > 0)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-danger">
+                DANGER: This survey has responses, chaning things like tasks will may affect your results.
+            </div>
+        </div>
+    </div>
+}

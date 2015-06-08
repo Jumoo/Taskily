@@ -1,0 +1,33 @@
+﻿@model TaskilyWeb.Models.Survey
+
+<div class="col-xs-12 col-md-offset-1 col-md-11">
+    @if (Model.Responses.Count > 0)
+    {
+        <div class="alert alert-info">
+            Your survey has responses, so removing tasks will not delete them - it will just mark them as inactive. They will still appear in
+            the stats, but users will no longer be able to select them.
+        </div>
+    }
+
+    <h3>Current tasks</h3>
+    <table class="table" id="taskTable">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        <tbody id="tableTasks"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <h3>Add a new task</h3>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" id="newTask" name="newTask" /></td>
+                <td><input type="text" class="form-control" id="newDesc" name="newDesk" /></td>
+                <td><a id="addTask" class="btn btn-sm btn-success">Add</a></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

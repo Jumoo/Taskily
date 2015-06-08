@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    <h2>Welcome back <small>/hia/</small></h2>
+    <p>
+        Hi<strong> @Html.Raw(@User.Identity.GetUserName() + ".") </strong>All your surveys are waiting for you.
+    </p>
+    <div class="logon-actions">
+        @Html.ActionLink("Go to my Taskily", "Index", "Admin", new { }, new { @class = "btn btn-success btn-lg" })
+    </div>
+}
+else
+{
+    <h2>Create your free account today</h2>
+    <p>
+        Sign up for a free account, and see what Taskily could do for you.
+    </p>
+    <div class="text-center">
+        @Html.ActionLink("Sign up", "signup", "Account", null, new { @class = "btn btn-lg btn-success" })
+    </div>
+}

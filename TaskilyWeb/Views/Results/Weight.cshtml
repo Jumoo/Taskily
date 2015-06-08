@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Weight";
+    Layout = "~/Views/results/_resultslayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h2>@ViewBag.SurveyTitle <small>results so far (by Weight)</small></h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="survey-chart" id="chart_weight" style="height: @Html.Raw(ViewBag.Tasks * 15 + "px");"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ContentBlob("taskily/results/weight")
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <h3><a href="/"><span class="logo">taskily</span></a></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/Scripts/public/TaskilyGraphs.js"></script>
+    <script>
+    google.load("visualization", "1", { packages: ['corechart', 'table'] });
+    $(document).ready(function () {
+        var chartily = new TaskilyCharts();
+        chartily.loadChart(@ViewBag.SurveyID, "Weight Percentage", document.getElementById("chart_weight"));
+    });
+    </script>
+
+}
+
+

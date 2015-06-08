@@ -1,0 +1,27 @@
+﻿@model TaskilyWeb.Models.Survey
+
+<div class="col-md-offset-1 col-md-11">
+    <div class="alert alert-warning">
+        <strong>Welcome to the Danger Zone</strong><br/>
+        The actions on this tab can delete your data, and/or the whole survey. Be sure you are happy with what you are doing before you carry on.
+    </div>
+    <div class="col-sm-6">
+        <h2>Clean responses</h2>
+        <p>
+            Clean will remove all the responses from the survey - so when you've finished testing, first clean, then launch.
+        </p>
+        @Html.ActionLink("Clean", "Clean", new { @id = Model.ID }, new { @class = "btn btn-lg btn-warning" })
+    </div>
+    <div class="col-md-6">
+        <div class="delete-msg">
+            <h2>Delete survey</h2>
+            <p>
+                Delete the survey - do this to lose all tasks, all responses and all stats.
+            </p>
+            @Html.ActionLink("Delete", "Delete", new { @id = Model.ID }, new { @class = "btn btn-lg btn-danger" })
+        </div>
+    </div>
+
+
+
+</div>

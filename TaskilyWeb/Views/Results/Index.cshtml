@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.SurveyTitle</h2>
+
+<ul>
+    <li>@ViewBag.SurveyID</li>
+    <li>@ViewBag.Tasks</li>
+</ul>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="survey-chart" id="chart_weight" style="height: @Html.Raw(ViewBag.Tasks * 10 + "px");"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="survey-chart" id="chart_count" style="height: @Html.Raw(ViewBag.Tasks * 10 + "px");"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="data_table"></div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/Scripts/public/TaskilyGraphs.js"></script>
+    <script>
+    google.load("visualization", "1", { packages: ['corechart', 'table'] });
+    $(document).ready(function () {
+        var chartily = new TaskilyCharts();
+        chartily.loadChart(@ViewBag.SurveyID, "Count", document.getElementById("chart_count"));
+        chartily.loadChart(@ViewBag.SurveyID, "WeightPercentage", document.getElementById("chart_weight"));
+        chartily.loadChart(@ViewBag.SurveyID, "Table", document.getElementById("data_table"));
+    });
+</script>
+
+}
+

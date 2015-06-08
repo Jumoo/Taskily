@@ -1,0 +1,164 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Survey Details";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/admin/">My Taskily</a></li>
+            <li>@Model.Name</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h2>Survey: @Html.DisplayFor(m => m.Name)</h2>
+        </div>
+
+        @if ( ViewBag.SurveyFull )
+        {
+            <div class="alert alert-danger">
+                <h3>Your Survey is full:</h3> 
+                    <p>You have reached the limit of @ViewBag.Limit for responses for this survey.</p> 
+                    <p>If you @Html.ActionLink("upgrade your account", "index", "upgrade") you can have unlimited responses.</p>
+            </div>
+        }
+
+        @Html.ContentBlob("taskily/survey/details-intro")
+      
+        <div class="row">
+            <div class="col-md-8">
+                <h2>
+                    You have had
+                    <span class="label label-success">@Html.Raw(@Model.Responses.Count == 0 ? "no" : @Model.Responses.Count.ToString())</span>
+                    @Html.Raw(@Model.Responses.Count != 1 ? "responses" : "response")
+                </h2>
+                @if (ViewBag.Limit != null)
+                {
+                    <span class="label label-info">You have <strong>@ViewBag.Limit</strong> responses per survey</span>
+                }
+
+            </div>
+            <div class="col-md-4">
+                <div class="survey-buttons">
+                    @Html.ActionLink("Edit Details", "Edit", new { @id = Model.ID }, new { @class = "btn btn-primary" })
+                    <a href="@Html.Raw("/public/" + @Model.UID)" target="_blank" class="btn btn-success">
+                        Run your survey</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="summary-info">
+            <h4>Survey Settings</h4>
+            <table class="summary-table">
+
+                @if (ViewBag.IsAdmin)
+                {
+                <tr>
+                    <th>Org :</th>
+                    <td>@Model.organisation.Name</td>
+                </tr>
+                  
+                }
+
+                <tr>
+                    <th>Name :</th>
+                    <td>@Model.Name</td>
+                </tr>
+
+                <tr>
+                    <th>Active :</th>
+                    <td>@Html.Raw(@Model.Active ? "Open" : "Closed")</td>
+                </tr>
+
+                <tr>
+                    <th>Tasks :</th>
+                    <td>@Model.Tasks.Count</td>
+                </tr>
+
+                <tr>
+                    <th>Questions :</th>
+                    <td>@Model.Questions.Count</td>
+                </tr>
+
+                <tr>
+                    <th>Responses :</th>
+                    <td>@Model.Responses.Count</td>
+                </tr>
+
+                <tr>
+                    <th>Public URL :</th>
+                    <td><a href="@Html.Raw("/public/" + @Model.UID)" target="_blank">@Html.Raw("/public/" + @Model.UID)</a></td>
+                </tr>
+                <tr>
+                    <th>Popup:</th>
+                    <td>@Html.ActionLink("Get code", "popup", new { @id = @Model.ID })</td>
+                </tr>
+            </table>
+
+            <div class="summary-actions">
+                @Html.ActionLink("Edit details", "Edit", new{@id = Model.ID}, new{ @class="btn btn-sm btn-primary" })
+                @Html.ActionLink("Clean results", "Clean", new { @id = Model.ID }, new { @class="btn btn-sm btn-warning" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h3>Survey Data</h3>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="survey-chart" id="chart_weight" style="height: @Html.Raw(Model.Tasks.Count * 10 + "px");"></div>
+    </div>
+    <div class="col-md-6">
+        <div class="survey-chart" id="chart_count" style="height: @Html.Raw(Model.Tasks.Count * 10 + "px");"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="data_table"></div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <div class="text-center">
+            @Html.ActionLink("Download the data", "GetData", "Data", new { @id = Model.ID }, new { @class = "btn btn-lg btn-success btn-block" })
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="text-center">
+            @Html.ActionLink("Summary data", "GetSummary", "Data", new { @id = Model.ID }, new { @class = "btn btn-lg btn-primary btn-block" })
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/Scripts/public/TaskilyGraphs.js"></script>
+    <script>
+        google.load("visualization", "1", { packages: ['corechart', 'table'] });
+        $(document).ready(function () {
+            var chartily = new TaskilyCharts();
+            chartily.loadChart(@Model.ID, "Count", document.getElementById("chart_count"));
+            chartily.loadChart(@Model.ID, "Weight Percentage", document.getElementById("chart_weight"));
+            chartily.loadChart(@Model.ID, "Table", document.getElementById("data_table"));
+        });
+    </script>
+
+}
+

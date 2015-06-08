@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="homepage-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>New Survey: @ViewBag.Title</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="survey-help">
+                @Html.ContentBlob((string)@ViewBag.HelpContent)
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

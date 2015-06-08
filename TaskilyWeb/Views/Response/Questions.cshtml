@@ -1,0 +1,99 @@
+﻿@using TaskilyWeb.Models
+
+@model TaskilyWeb.Models.Response
+
+@{
+    ViewBag.Title = "Questions";
+    Layout = "~/Views/Response/_layoutpublic.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>@Html.Raw(String.IsNullOrWhiteSpace(@ViewBag.Heading) ? "About you" : @ViewBag.Heading )
+                        <small>@Html.Raw(String.IsNullOrWhiteSpace(@ViewBag.SubHeading) ? "A few things we would like to know." : @ViewBag.SubHeading)</small></h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @if ( String.IsNullOrWhiteSpace(@ViewBag.Summary))
+                {
+                    <p>
+                        It would help us to have a little bit more information, so we can better understand your choice. 
+                    </p>
+                }
+                else
+                {
+                    @Html.Raw(@ViewBag.Summary)
+                }
+
+
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @foreach (Question q in ViewBag.Questions)
+                {
+                    var qID = "qst_" + q.ID.ToString();
+                    <div class="question">
+
+                        @switch (q.Type)
+                        {
+                            case QuestionType.FreeText:
+                                <div class="form-group">
+                                    <label for="@qID">@q.Text</label>
+                                    @Html.TextArea(@qID, new { @class = "form-control input-lg" })
+                                </div>
+                                break;
+                            case QuestionType.MultipleChoice:
+                                <div>
+                                    <label>@q.Text</label>
+                                </div>
+                                foreach(var option in q.Data.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None))
+                                {
+                                    <div class="radio">
+                                        <label>
+                                            @Html.RadioButton(qID, option)
+                                            @option
+                                        </label>
+                                    </div>
+                                }
+                                
+                                break;
+                            case QuestionType.YesNo:
+                                <div>
+                                    <label>@q.Text</label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton(qID, "Yes") Yes</label>
+                                </div>
+                                <div class="radio">
+                                    <label>@Html.RadioButton(qID, "No") No</label>
+                                </div>
+                                break;
+                            default:
+                                <span>Unknown type</span>
+                                break;
+
+                        }
+
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="full-page">
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="submit" value="Finish" class="btn btn-primary btn-lg" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

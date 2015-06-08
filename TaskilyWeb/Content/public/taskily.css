@@ -1,0 +1,249 @@
+﻿/* taskly.css */
+
+body { 
+    padding: 0 0 160px 0; 
+} 
+
+.logo { font-family: Pacifico; font-weight: normal;}
+
+.task {
+	padding: 15px 10px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.1;
+	text-align: left;
+	border: 1px solid #ddd;
+	height: 90px;
+	margin: 5px 0;
+    display:block;
+    overflow: hidden;
+}
+
+.task input[type="checkbox"] {
+    display:none;
+}
+
+.task .note { font-size: 10pt; color: #AAA;}
+
+.task:hover {
+    background-color: #d0d9ff;
+    border-color: #afbfff;
+}
+
+.picked:hover {
+	color: #ffffff ; 
+    border-color: #738ffe;
+    background-color: #738ffe;
+	cursor: pointer; 
+}
+
+.picked, .picked:active {
+	color: #e7e9fd ; 
+	background: url('/img/ic_action_accept.png') no-repeat top right #5677fc;	
+    border-color: #5677fc;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	
+}
+
+.picked .task-note {
+    color: #afbfff;
+}
+
+.task-btn-pick, .task-btn-clear { display: none; } 
+
+#pickList .label-info {
+    font-weight: normal;
+    font-size: 1em;
+    margin: 0.15em;
+    white-space: pre-line;
+    line-height: 2;
+    background-color: #5677fc;
+}
+
+.nowrap
+{
+    display: inline-block;
+}
+
+.task-note {
+    font-size: 0.7em;
+    color: #888;
+    font-weight: normal;
+}	
+.task:hover { 
+	}
+	
+.picker-bar {
+	z-index: 100;
+	position: fixed;
+    min-height:90px;
+	bottom:0;
+	width: 100%;
+	background-color: #ddd;
+	padding: 10px;
+	border-top: 1px solid #444;
+	}
+
+.picker-bar h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 1.6em;
+}
+
+#pickList {
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+button.close {
+    float: none;
+    text-shadow: none;
+    padding-left: 10px;
+    color: #ddd;
+    vertical-align: sub;
+}
+
+h1 {
+    margin-top: 5px;
+}
+div.page-header {
+    margin: 10px 0;
+}
+
+.sorting-task {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.1;
+	text-align: left;
+	margin: 5px 0;
+}
+
+/* for the ordering... */
+.order-text {
+    border: 1px solid #ccc;
+    display: block;
+    height: 90px;
+    padding: 0.3em;
+    background-color: #ddd;
+    max-width:80%;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	-moz-box-shadow:    0 1px 5px rgba(0,0,0,.2);
+    color:#FBE9E7;
+}
+
+.ui-sortable-helper .order-buttons {
+    visibility: hidden;
+}
+
+.sortable li { height: 90px; }
+
+li.sortable-placeholder {
+			border: 1px dashed #CCC;
+			background: none;
+		}
+
+li.task { display: list-item;}
+
+.order {
+    cursor: url(https://mail.google.com/mail/images/2/openhand.cur), default !important;
+}
+
+
+.sortable .no-1 { background-color: #ff8a65; }
+.sortable .no-2 { background-color: #ff7043; }
+.sortable .no-3 { background-color: #ff5722; }
+.sortable .no-4 { background-color: #f4511e; }
+.sortable .no-5 { background-color: #e64a19; }
+.sortable .no-6 { background-color: #d84315; }
+.sortable .no-7 { background-color: #bf360c; }
+
+.order-buttons 
+{
+	float: right;
+	margin-top: -80px;
+    padding-right: 20px;
+}
+
+
+.order-buttons .fa-2x {
+    font-size: 1.5em;
+}
+
+.order-buttons a {
+    display: block;
+    color: #888;
+}
+	
+.order-buttons .btn-hidden {
+	visibility: hidden;
+}
+	
+
+
+/*  questions */
+
+.full-page {
+    text-align: center;
+    font-size: 1.5em;
+}
+.full-page h1 { font-size: 2.7em; }
+
+.full-page .left { text-align: left;}
+
+div.question {
+    border-top: 1px solid #ededed;
+    margin: 1em;
+    padding: 2em;
+}
+.question label {
+    font-weight: normal;
+    font-size: 1.4em;
+}
+
+.question .radio label
+{
+    font-size:1em;
+    
+}
+
+.question .radio {
+    padding-left: 4em;
+}
+
+@media (max-width: 767px)
+{
+    .task {
+        font-size:15px;
+    }
+
+    span.label.label-info {
+        display: block;
+        padding: 7px;
+        margin-bottom: 10px;
+    }
+
+    .picker-bar {
+        position:relative;
+        bottom:0;
+    }
+
+    body { padding: 0; }
+
+    .full-page h1 { font-size: 2em; }
+
+}
+
+.draw-contact {
+    font-weight: normal;
+    text-align: left;
+    font-size: 0.75em;
+}
+
+.draw-contact p {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}

@@ -1,0 +1,1 @@
+This is where you can see everything about your survey. You can edit the survey, see a summary of the responses, or download the data.

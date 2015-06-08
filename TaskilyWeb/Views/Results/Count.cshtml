@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Weight";
+    Layout = "~/Views/results/_resultslayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h2>@ViewBag.SurveyTitle <small>results so far (by Count)</small></h2>
+            </div>
+            <p>
+                Completed : @ViewBag.Responses times
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="survey-chart" id="chart_count" style="height: @Html.Raw(ViewBag.Tasks * 10 + "px");"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                <h3><span class="logo">taskily</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/Scripts/public/TaskilyGraphs.js"></script>
+    <script>
+    google.load("visualization", "1", { packages: ['corechart', 'table'] });
+    $(document).ready(function () {
+        var chartily = new TaskilyCharts();
+        chartily.loadChart(@ViewBag.SurveyID, "Count", document.getElementById("chart_count"));
+            });
+    </script>
+
+}
+
+

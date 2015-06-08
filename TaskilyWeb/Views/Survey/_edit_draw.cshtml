@@ -1,0 +1,61 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@using (Html.BeginForm("PrizeDraw", "Survey"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ID)
+    @Html.HiddenFor(m => m.OrganisationID)
+
+    <div class="col-xs-12 col-md-offset-1 col-md-6">
+        <div class="form-group">
+            <div class="checkbox">
+                <label class="radio inline control-label big-radio">
+                    @Html.CheckBoxFor(m => m.Draw, new { @class = "input-lg" })
+                    Prize Draw
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DrawTitle)
+            @Html.TextBoxFor(m => m.DrawTitle, new { @class = "form-control input-lg" })
+            @Html.ValidationMessageFor(m => m.DrawTitle)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DrawMessage)
+            @Html.TextAreaFor(m => m.DrawMessage, new { @class = "form-control input-lg tiny-edit" })
+            @Html.ValidationMessageFor(m => m.DrawMessage)
+        </div>
+
+        <div class="page-header">
+            <h3>Email Marketing</h3>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox">
+                <label class="radio inline control-label big-radio">
+                    @Html.CheckBoxFor(m => m.MarketingOptIn, new { @class = "input-lg" })
+                    Opt in to marketing/contact. 
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MarketingMessage)
+            @Html.TextAreaFor(m => m.MarketingMessage, new { @class = "form-control input-lg tiny-edit" })
+            @Html.ValidationMessageFor(m => m.DrawMessage)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-primary" value="Save" />
+            @Html.ActionLink("Cancel", "Edit", new { @id = Model.ID }, new { @class = "btn btn-lg btn-danger" })
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="edit-sidebar">
+            @Html.ContentBlob("taskily/survey/draw")
+        </div>
+    </div>
+}
+

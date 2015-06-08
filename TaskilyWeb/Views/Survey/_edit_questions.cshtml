@@ -1,0 +1,54 @@
+﻿@model TaskilyWeb.Models.Survey
+
+    <div class="col-sm-6 col-md-offset-1 col-md-6">
+        <h3>Current Questions</h3>
+        <table class="table" id="questionTable">
+            <tr>
+                <th>Name</th>
+                <th>Text</th>
+                <th></th>
+            </tr>
+            <tbody id="tableQuestions"></tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-6 col-md-5">
+
+        <input type="hidden" id="qstID" name="qstID" value="0" />
+
+        <div class="form-group">
+            <label for="qstName">Name</label>
+            <input type="text" name="qstName" id="qstName" class="form-control" />
+            <span class="help-block">Question name - only you will see this.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="qstText">Question Text</label>
+            <input type="text" name="qstText" id="qstText" class="form-control" />
+            <span class="help-block">The question the user will see.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="qstType">Type</label>
+            <select id="qstType" name="qstType" class="form-control">
+                <option value="0">Free Text</option>
+                <option value="1">Number</option>
+                <option value="2">Multiple Choice</option>
+                <option value="3">Yes/No</option>
+            </select>
+            <span class="help-block">The type of question.</span>
+        </div>
+
+        <div class="form-group" id="question-choices" style="display:none;">
+            <label for="qstData">Choices</label>
+            <textarea id="qstData" name="qstData" rows="6" cols="30" class="form-control"></textarea>
+            <span class="help-block">Multiple Choice options (one per line).</span>
+        </div>
+
+        <div class="form-group">
+            <a href="#" class="btn btn-primary" id="addQst">Add Question</a>
+            <a href="#" class="btn btn-danger" id="clearQst">Clear</a>
+        </div>
+    </div>
+
+

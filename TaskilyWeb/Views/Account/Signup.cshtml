@@ -1,0 +1,46 @@
+﻿@using TaskilyWeb.Models
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="layout-header signup-header">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>
+                    Sign up for <span class="logo">taskily</span><small>
+                        @Html.ContentBlob("taskily/signup/header")
+                    </small>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="signup-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @Html.ContentBlob("taskily/signup/intro")
+            </div>
+        </div>
+        <div class="sign-up-btns">
+            <div class="row">
+                <div class="col-sm-3 col-sm-offset-3">
+                    @Html.ActionLink("Create an account", "register", null, new { @class = "btn btn-lg btn-primary" })
+                </div>
+                <div class="col-sm-3">
+                    @Html.Partial("_GoogleBtnPartial", new ExternalLoginListViewModel { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @Html.ContentBlob("taskily/signup/intro_2")
+            </div>
+        </div>
+    </div>
+</div>
+

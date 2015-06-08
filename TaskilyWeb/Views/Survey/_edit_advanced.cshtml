@@ -1,0 +1,106 @@
+﻿@model TaskilyWeb.Models.Survey
+
+
+<div class="col-md-offset-1 col-md-11">
+    <h3>Advanced</h3>
+    @Html.ContentBlob("taskily/survey/edit_advanced")
+
+    @using (@Html.BeginForm("EditAdvanced", "Survey"))
+    {
+        @Html.AntiForgeryToken();
+        @Html.HiddenFor(m => m.ID);
+        @Html.HiddenFor(m => m.OrganisationID);
+        
+        <div class="col-md-6">
+            <fieldset>
+                <legend>HTML and Styles</legend>
+                <div class="alert alert-info">
+                    Use your own HTML and styles. The settings here will be added to all public survey pages.
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HeaderHtml)
+                    @Html.TextAreaFor(m => m.HeaderHtml, 6, 30, new { @class = "form-control input-lg" })
+                    <span class="help-block">HTML to be put at the top of all survey pages.</span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FooterHtml)
+                    @Html.TextAreaFor(m => m.FooterHtml, 6, 30, new { @class = "form-control input-lg" })
+                    <span class="help-block">HTML to be put at the bottom of all survey pages.</span>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CssFile)
+                    @Html.TextBoxFor(m => m.CssFile, new { @class = "form-control input-lg" })
+                    <span class="help-block">URL to the CSS you want to apply to all pages.</span>
+                </div>
+            </fieldset>
+        </div>
+    <div class="col-md-6">
+        <fieldset>
+            <legend>Page Headings</legend>
+            <div class="alert alert-info">
+                Here, you can change any of the headings/subheadings used across the survey.
+                If you choose not to set them then the default text is used.
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TasksHeading)
+                @Html.TextBoxFor(m => m.TasksHeading, new { @class = "form-control input-lg" })
+                <span class="help-block">Heading for the "Pick the task" page</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TasksSubHeading)
+                @Html.TextBoxFor(m => m.TasksSubHeading, new { @class = "form-control input-lg" })
+                <span class="help-block">Subtitle for the "Task" page</span>
+            </div>
+
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.OrderHeading)
+                @Html.TextBoxFor(m => m.OrderHeading, new { @class = "form-control input-lg" })
+                <span class="help-block">Heading for the "Order" page</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OrderSubHeading)
+                @Html.TextBoxFor(m => m.OrderSubHeading, new { @class = "form-control input-lg" })
+                <span class="help-block">Subtitle for the "Order" page</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.OrderText)
+                @Html.TextAreaFor(m => m.OrderText, new { @class = "form-control input-lg tiny-edit" })
+                <span class="help-block">Text on the "Order" page</span>
+            </div>
+
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.QuestionHeading)
+                @Html.TextBoxFor(m => m.QuestionHeading, new { @class = "form-control input-lg" })
+                <span class="help-block">Heading for the Question page</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.QuestionSubHeading)
+                @Html.TextBoxFor(m => m.QuestionSubHeading, new { @class = "form-control input-lg" })
+                <span class="help-block">Subtitle for the Question page</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.QuestionText)
+                @Html.TextAreaFor(m => m.QuestionText, new { @class = "form-control input-lg tiny-edit" })
+                <span class="help-block">Text on the Question page</span>
+            </div>
+
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-lg btn-primary" />
+                @Html.ActionLink("Cancel", "Edit", new { @id = Model.ID })
+            </div>
+        </fieldset>
+    </div>
+
+    }
+</div>

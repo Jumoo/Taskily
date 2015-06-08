@@ -1,0 +1,34 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Response/_layoutpublic.cshtml";
+    ViewBag.Css = @Model.CssFile;
+    ViewBag.Header = @Model.HeaderHtml;
+    ViewBag.Footer = @Model.FooterHtml;
+}
+
+<div class="full-page container">
+    @if (!@Model.Active)
+    {
+        <div class="row">
+            <div class="alert alert-info">
+                <p>This survey is not live, you can see this survey because you are logged in.</p>
+                <p>To make the survey live: go to your dashboard and mark the survey as active.</p>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+                <h1>@Model.WelcomeTitle</h1>
+            </div>
+            <div class="left">
+                @Html.Raw(@Model.WelcomeMessage)
+            </div>
+            <hr />
+            @Html.ActionLink("Start", "Tasks", new {id = Model.UID}, new{@class="btn btn-lg btn-success"})
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,79 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "What's Important?";
+    Layout = "~/Views/Response/_layoutpublic.cshtml";
+    ViewBag.Css = @Model.CssFile;
+    ViewBag.Header = @Model.HeaderHtml;
+    ViewBag.Footer = @Model.FooterHtml;
+   
+}
+
+@using (Html.BeginForm("Order", "Response"))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(m => m.ID);
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>@Html.Raw(String.IsNullOrWhiteSpace(@Model.TasksHeading) ? "What's important to you?" : @Model.TasksHeading) 
+                    <small>@Html.Raw(String.IsNullOrWhiteSpace(@Model.TasksSubHeading) ? "Pick " + @Model.TaskCount + " things that matter to you." : @Model.TasksSubHeading)</small></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach(var task in Model.Tasks)
+            {
+                <div class="col-sm-3 col-xs-6">
+                    <label class="task" data-name="@task.Name" data-id="@task.ID" id="lbl_@task.ID">
+                        <input type="checkbox" name="tasks" value="@task.ID" class="task-check" id="r_@task.ID" />
+                        @task.Name
+                        <span class="task-note">@task.Description</span>
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <div class="picker-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h2>
+                        You have picked <span id="pickCount">0 items</span>:
+                        <span id="pickError"></span>
+                    </h2>
+                    <div id="pickList"></div>
+                </div>
+                <div class="col-md-2">
+                    <div class="pull-right">
+                        <input type="submit" id="taskNext" class="task-btn-pick btn btn-primary btn-lg" value="Next &raquo;" /> 
+                        <button type="button" id="taskClear" class="task-btn-clear btn btn-danger btn-lg">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+}
+
+@section Scripts
+{
+    <script>
+        var taskily;
+
+        $(document).ready(function () {
+            taskily = new Taskily(@Model.TaskCount);
+
+            $("#taskClear").click(function () {
+                taskily.clear();
+            });
+
+            $(".task-check").click(function () {
+                $(this).parent().toggleClass("picked");
+                taskily.updatePickerBar();
+            });
+        })
+    </script>
+}
+

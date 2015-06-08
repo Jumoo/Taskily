@@ -1,0 +1,9 @@
+﻿@using TaskilyWeb.Models
+@model ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+@using (Html.BeginForm(Model.Action, "Account", new { ReturnUrl = Model.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-lg btn-Google" id="Google" name="provider" value="Google" title="Log in using your Google account">Use your Google account</button>
+}

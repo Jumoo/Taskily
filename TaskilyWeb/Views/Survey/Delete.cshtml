@@ -1,0 +1,43 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="delete-page">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h2>Delete</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Are you sure want to delete this?</h3>
+
+            @if( Model.Responses.Count > 0 )
+            {
+                <div class="alert alert-danger">
+                    <h3>DANGER WILL ROBINSION!</h3>
+                    This survey has responses, deleting the survey means you will
+                    lose all of that.
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @using( Html.BeginForm())
+            {
+                @Html.AntiForgeryToken();
+                
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                
+                @Html.ActionLink("Go Back", "Edit", new { @id = Model.ID }, new { @class = "btn btn-lg btn-success"})
+            }
+        </div>
+    </div>
+</div>

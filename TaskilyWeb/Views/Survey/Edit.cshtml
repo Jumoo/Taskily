@@ -1,0 +1,96 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/admin/">My Taskily</a></li>
+            <li><a href="/survey/details/@Model.ID">@Model.Name</a></li>
+            <li>Edit</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#survey" role="tab" data-toggle="tab">Survey</a></li>
+            <li><a href="#tasks" role="tab" data-toggle="tab">Tasks</a></li>
+            <li><a href="#questions" role="tab" data-toggle="tab">Questions</a></li>
+            @if (ViewBag.FullAccount)
+            {
+                <li><a href="#draw" role="tab" data-toggle="tab">Prize Draw</a></li>
+            }
+            <li><a href="#customize" role="tab" data-toggle="tab">Customize</a></li>
+            <li><a href="#advanced" role="tab" data-toggle="tab" class="tab-advanced">Advanced</a></li>
+            <li><a href="#remove" role="tab" data-toggle="tab" class="tab-advanced">Remove</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- tasks -->
+<div class="row">
+    <div class="tab-content survey-edit-tabs">
+        <div class="tab-pane active" id="survey">
+            @Html.Partial("_edit_details", Model)
+        </div>
+        <div class="tab-pane" id="tasks">
+            @Html.Partial("_edit_tasks", Model)
+        </div>
+        <div class="tab-pane" id="questions">
+            @Html.Partial("_edit_questions", Model)
+        </div>
+        @if (ViewBag.FullAccount) { 
+        <div class="tab-pane" id="draw">
+            @Html.Partial("_edit_draw", Model)
+        </div>
+        }
+        <div class="tab-pane" id="customize">
+            @Html.Partial("_edit_customize", Model)
+        </div>
+        <div class="tab-pane" id="advanced">
+            @Html.Partial("_edit_advanced", Model)
+        </div>
+        <div class="tab-pane" id="remove">
+            @Html.Partial("_edit_remove", Model)
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script src="~/Scripts/admin/helpers.js"></script>
+    <script src="~/Scripts/admin/tasks.js"></script>
+    <script src="~/Scripts/admin/questions.js"></script>
+    
+    <script>
+        $(document).ready(function ()
+        {
+            var tasks = new taskilyTasks(@Model.ID, '#tableTasks');
+            tasks.loadTasks()
+
+            var questions = new taskilyQuestions(@Model.ID, "#tableQuestions");
+            questions.loadQuestions();
+
+          
+        });
+    </script>
+
+
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea.tiny-edit',
+            menubar: false,
+            toolbar: "bold italic | bullist numlist outdent indent"
+        });
+    </script>
+
+
+
+   
+}

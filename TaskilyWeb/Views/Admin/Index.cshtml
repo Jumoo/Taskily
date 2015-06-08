@@ -1,0 +1,113 @@
+﻿@model IEnumerable<TaskilyWeb.Models.Organisation>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="layout-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                @Html.ContentBlob("taskily/admin/index")
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewBag.IsAdmin)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-success">You are admin</div>
+            </div>
+        </div>
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="survey-list">
+                <div class="page-header">
+                    <h2>Your surveys</h2>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Survey</th>
+                            <th class="text-center">Active</th>
+                            <th class="text-center">Tasks</th>
+                            <th class="text-center">Responses</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var org in Model)
+                        {
+                            foreach (var survey in org.Surveys)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(s => survey.Name)</td>
+                                    <td class="text-center">@Html.DisplayFor(s => survey.Active)</td>
+                                    <td class="text-center">@Html.DisplayFor(s => survey.Tasks.Count)</td>
+                                    <td class="text-center">@Html.DisplayFor(s => survey.Responses.Count)</td>
+                                    <td class="text-center">
+                                        @Html.ActionLink("Survey details", "Details", "Survey", new { id = survey.ID }, new { @class = "btn btn-sm btn-primary" })
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div class="pull-right">
+                    @if (ViewBag.SurveyLimit == false)
+                    {
+                        @Html.ActionLink("Create a new survey", "Create", "Survey", new { }, new { @class = "btn btn-success" })
+                    }
+                    else
+                    {
+                        <small class="label label-warning">You've reached your survey limit; upgrade for more surveys.</small>
+                        @Html.ActionLink("Upgrade", "Index", "Upgrade", new { }, new { @class = "btn btn-success" })
+                    }
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-4">
+            @foreach (var item in Model)
+            {
+                <div class="org-details">
+                    <h2>Organisation: @Html.DisplayFor(i => item.Name)</h2>
+                    <table class="table">
+                        <tr>
+                            <td>Surveys</td>
+                            <td>@Html.Raw(@item.Surveys.Count())</td>
+                        </tr>
+                        <tr>
+                            <td>Subscription</td>
+                            <td>@Html.DisplayFor(i => item.AccountType)</td>
+                        </tr>
+                    </table>
+                    <div class="ord-details-buttons">
+                        @if (item.AccountType == TaskilyWeb.Models.OrgAccountType.free)
+                        {
+                            @Html.ActionLink("Upgrade", "Index", "Upgrade", null, new { @class = "btn btn-sm btn-default" })
+                        }
+                        @Html.ActionLink("View", "Edit", new { id = item.ID }, new { @class = "btn btn-sm btn-primary" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="page-header">
+                @Html.ContentBlob("taskily/admin/help")
+            </div>
+        </div>
+    </div>
+</div>

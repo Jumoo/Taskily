@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_layoutheader.cshtml";
+}
+
+@section Heading {
+    <h2>Contact us</h2>
+}
+<div class="row">
+    <div class="col-xs-12 col-md-5 col-md-offset-1">
+
+
+        @Html.ContentBlob("taskily/contact/contact")
+        <p>
+            <address>
+                <strong>Taskily at Jumoo:</strong>   <a href="mailto:taskily@jumoo.co.uk">taskily@jumoo.co.uk</a>
+            </address>
+        </p>
+    </div>
+</div>

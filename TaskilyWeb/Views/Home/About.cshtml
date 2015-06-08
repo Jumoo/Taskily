@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "How Taskily works";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="homepage-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header">
+                    <h2>@ViewBag.Title. <small>It's easy, quick and simple.</small></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="page-header">
+                <h2>How Taskily works</h2>
+            </div>
+            <p>
+                Taskily has been built to help you understand what is important to people. You create a list of 'tasks',
+                then ask people to order them, according to what they care about most.
+            </p>
+            <p>
+                Taskily does the rest, presenting a clean and easy-to-use interface for people to fill in - getting you the
+                results you need quickly and easily.
+            </p>
+            <div class="about-blurb">
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Pick what's important</h3>
+                            <p>
+                                When someone is filling in your survey, they will be presented with a list of tasks, and asked
+                                to choose a certain number of them (you choose the number).
+                            </p>
+                            <p>
+                                The tasks are shown in a random order, which changes each time the survey runs - so you don't just
+                                get the first task picked every time.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/survey-pick.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/survey-order.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Put them in order</h3>
+                            <p>
+                                Once they have picked the tasks, your users will be asked to put them into order.
+                            </p>
+                            <p>
+                                Users can change the order by dragging the boxes around, and at the end, their most important
+                                task will be at the top.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Ask extra questions</h3>
+                            <p>
+                                If you need to ask a couple of extra things, you can.
+                            </p>
+                            <p>
+                                Extra questions let you categorize your results. Maybe under-30s like different things to over-55s?
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/survey-questions.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/survey-draw.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Enter a prize draw<sup>*</sup>?</h3>
+                            <p>
+                                Give people a reason to fill in your survey. With a standard Taskily account, you can
+                                let people enter a prize draw <em>(prizes not included!)</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="page-header">
+                <h2>You have control</h2>
+            </div>
+            <p>
+                Taskily's admin tools make it easy to create and control surveys.
+            </p>
+            <div class="about-blurb">
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Survey dashboard</h3>
+                            <p>
+                                Run multiple surveys, all from one place.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/admin.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/survey-details.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Results centre</h3>
+                            <p>
+                                See what's happening, and follow the results as they come in (if you like that sort of thing - we really do!).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-panel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Complete control</h3>
+                            <p>
+                                Edit all aspects of your survey. You can change the tasks,
+                                add questions and even completely customize the look and
+                                feel of the survey, if you want to.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/img/screenshots/edit-tasks.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="page-header">
+                <h2>Get Taskily today</h2>
+            </div>
+            <p>
+                A free taskily account gives you three free surveys, and up to 50 responses per survey. Sign-up now, and you can
+                start to see what Taskily does, and whether it's what you need.
+                <div class="text-center">
+                    @Html.ActionLink("Sign up", "Signup", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-lg btn-primary" })
+                </div>
+            </p>
+        </div>
+    </div>
+</div>
+
+

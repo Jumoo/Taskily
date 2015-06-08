@@ -1,0 +1,107 @@
+﻿@model TaskilyWeb.Models.Organisation
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th></th>
+            <th style="width:200px" class="text-center">Free</th>
+            <th style="width:200px" class="text-center up-std">Standard</th>
+            <th style="width:200px" class="text-center">Unlimited</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th>Create surveys online</th>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <th>Public surveys</th>
+            <td class="text-center">3</td>
+            <td class="text-center up-std">5</i></td>
+            <td class="text-center">Unlimited</td>
+        </tr>
+        <tr>
+            <th>Gather responses</th>
+            <td class="text-center">50</td>
+            <td class="text-center up-std">Unlimited</td>
+            <td class="text-center">Unlimited</td>
+        </tr>
+        <tr>
+            <th>Live graphs of results</th>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <th>Make results public</th>
+            <td class="text-center"></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <th>Run a prize draw</th>
+            <td class="text-center"></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <th>Download all the data</th>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <th>Create/edit/manage surveys online</th>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <th>Add additional custom questions</th>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+            <td class="text-center up-std"><i class="fa fa-check"></i></td>
+            <td class="text-center"><i class="fa fa-check"></i></td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th>Cost</th>
+            <td class="text-center">Free</td>
+            <td class="text-center up-std">£100 per year</td>
+            <td class="text-center">Get in touch</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td class="text-center">
+                @if (!Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Sign up", "Signup", "Account", null, new { @class = "btn btn-lg btn-default" })
+                }
+            </td>
+            <td class="text-center up-std">
+                @if (!Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Sign up", "Signup", "Account", null, new { @class = "btn btn-lg btn-default" })
+                }
+                else if (@Model == null || @Model.AccountType == TaskilyWeb.Models.OrgAccountType.free)
+                {
+                    @Html.ActionLink("Upgrade", "Upgrade", "Upgrade", new { }, new { @class = "btn btn-lg btn-primary" })
+                }
+                else
+                {
+                    <button class="btn btn-lg btn-success" disabled>You have this <i class="fa fa-check"></i></button>
+                }
+            </td>
+            <td class="text-center"><a href="/home/contact" class="btn btn-lg btn-default">Contact Us</a></td>
+        </tr>
+
+    </tfoot>
+
+
+</table>

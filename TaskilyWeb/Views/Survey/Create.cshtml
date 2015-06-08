@@ -1,0 +1,29 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Survey/_layoutNewWizard.cshtml";
+    ViewBag.HelpContent = "taskily/new-survey/create";
+}
+
+@using(Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+            
+    @Html.ValidationSummary(true);
+            
+    <div class="form-group">
+                
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class= "form-control input-lg", @required = "required"})
+        @Html.ValidationMessageFor(m => m.Name)
+        <span class="help-block">The survey name will help you to keep track of the survey.</span>
+    </div>
+            
+    @Html.HiddenFor(m => m.OrganisationID);
+            
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary btn-lg" />
+    </div>
+}
+

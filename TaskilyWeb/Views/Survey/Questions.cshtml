@@ -1,0 +1,93 @@
+﻿@using TaskilyWeb.Models
+
+@model TaskilyWeb.Models.Question
+
+@{
+    ViewBag.Title = "Questions";
+    Layout = "~/Views/Survey/_layoutNewWizard.cshtml";
+    ViewBag.HelpContent = "taskily/new-survey/questions";
+
+}
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            @Html.Hidden("ID", (int)ViewBag.ID);
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-lg" })
+                @Html.ValidationMessageFor(m => m.Name)
+                <span class="help-block">Question name - only you will see this.</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Text)
+                @Html.TextBoxFor(m => m.Text, new { @class = "form-control input-lg" })
+                @Html.ValidationMessageFor(m => m.Text)
+                <span class="help-block">The question the user will see.</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Type)
+                @Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control input-lg" })
+                @Html.ValidationMessageFor(m => m.Type)
+                <span class="help-block">The type of question.</span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Data)
+                @Html.TextAreaFor(m => m.Data, 6, 30, new { @class = "form-control input-lg" })
+                @Html.ValidationMessageFor(m => m.Data)
+                <span class="help-block">Multiple Choice options (one per line).</span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-lg btn-primary" />
+            </div>
+        }
+    </div>
+
+    <div class="col-md-6">
+        <div class="page-header">
+            <h3>Current Questions</h3>
+        </div>
+        @if (ViewBag.Questions != null && ViewBag.Questions.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Question</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @foreach (Question q in ViewBag.Questions)
+                {
+                    <tr>
+                        <td>@q.Name</td>
+                        <td>@q.Text</td>
+                        <td>
+                            @Html.ActionLink("Remove", "DeleteQuestion", new { @id = q.ID }, new { @class = "btn btn-sm btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        }
+        else
+        {
+            <p>
+                <strong>No questions have been set.</strong>
+            </p>
+        }
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.ActionLink("Continue", "Customize", new { @id = ViewBag.ID }, new { @class = "btn btn-lg btn-primary" })
+</div>

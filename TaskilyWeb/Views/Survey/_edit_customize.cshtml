@@ -1,0 +1,55 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@using (Html.BeginForm("CustomEdit", "Survey"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ID)
+    @Html.HiddenFor(m => m.OrganisationID)
+    
+    <div class="col-xs-12 col-md-offset-1 col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.WelcomeTitle)
+            @Html.TextBoxFor(m => m.WelcomeTitle, new { @class = "form-control input-lg" })
+            @Html.ValidationMessageFor(m => m.WelcomeTitle)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.WelcomeMessage)
+            @Html.TextAreaFor(m => m.WelcomeMessage, new { @class = "form-control input-lg tiny-edit" })
+            @Html.ValidationMessageFor(m => m.WelcomeMessage)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CompleteTitle)
+            @Html.TextBoxFor(m => m.CompleteTitle, new { @class = "form-control input-lg" })
+            @Html.ValidationMessageFor(m => m.CompleteTitle)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CompleteMessage)
+            @Html.TextAreaFor(m => m.CompleteMessage, new { @class = "form-control input-lg tiny-edit" })
+            @Html.ValidationMessageFor(m => m.CompleteMessage)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.EndUrl)
+            @Html.TextBoxFor(m => m.EndUrl, new { @class = "form-control input-lg" })
+            @Html.ValidationMessageFor(m => m.EndUrl)
+            <span class="help-block">Include the http:// e.g. http://www.website.com/</span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-primary" value="Save" />
+            @Html.ActionLink("Cancel", "Edit", new { @id = Model.ID }, new { @class = "btn btn-lg btn-danger" })
+        </div>
+
+    </div>
+    
+    <div class="col-md-5">
+        <div class="edit-sidebar">
+            @Html.ContentBlob("taskily/survey/edit_customize")
+        </div>
+    </div>
+}
+
+

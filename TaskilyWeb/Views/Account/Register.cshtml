@@ -1,0 +1,69 @@
+﻿@using TaskilyWeb.Models
+
+@model TaskilyWeb.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Sign up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="layout-header signup-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Create your <span class="logo">taskily</span> account</h1>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h3 class="form-heading">Your Details</h3>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserDisplayName)
+                    @Html.TextBoxFor(m => m.UserDisplayName, new { @class = "form-control input-lg" })
+                    <span class="help-block">So we can be friendly when you come back!</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg" })
+                    <span class="help-block">We'll only send you emails from the app, no marketing stuff.</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg" })
+                    <span class="help-block">Make it at least 6 characters long,<br/>
+                    with a mix of case, a number<br/>
+                    and a special character.</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control input-lg" })
+                </div>
+
+                <h3 class="form-heading">Your Organisation</h3>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Organisation)
+                    @Html.TextBoxFor(m => m.Organisation, new { @class = "form-control input-lg" })
+                    <span class="help-block">All your surveys will sit under your organisation, but the name is not used publicly.</span>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-lg" value="Sign up" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

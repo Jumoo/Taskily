@@ -1,0 +1,35 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Clean";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h2>Clean <span class="label label-danger">@Model.Responses.Count()</span> responses from the survey.</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.ContentBlob("taskily/survey/clean")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+
+            <input type="submit" value="Clean" class="btn btn-lg btn-warning" />
+
+            @Html.ActionLink("Go Back", "Details", new { @id = Model.ID }, new { @class = "btn btn-lg btn-success" })
+        }
+    </div>
+</div>
+
+
+

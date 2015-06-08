@@ -1,0 +1,65 @@
+﻿@model TaskilyWeb.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="layout-header signup-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Associate to your <span class="logo">taskily</span> account</h1>
+                <p>&nbsp;</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+
+            @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <p class="text-info">
+                    You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+                    Please enter a name and email for this site to finish logging in.
+                </p>
+                
+                <h3 class="form-heading">Your Details</h3>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserDisplayName)
+                    @Html.TextBoxFor(m => m.UserDisplayName, new { @class = "form-control input-lg" })
+                    <span class="help-block">So we can be friendly when you come back</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    <span class="help-block">We'll only send you emails from the app, no marketing stuff</span>
+                </div>
+
+                <h3 class="form-heading">Your Organisation</h3>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Organisation)
+                    @Html.TextBoxFor(m => m.Organisation, new { @class = "form-control input-lg" })
+                    <span class="help-block">All your surveys, sit under the organisation, but the name is not used publicly.</span>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-success btn-lg" value="Finish" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

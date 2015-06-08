@@ -1,0 +1,50 @@
+﻿/* taskily-popup.css */
+
+#tsk-pop {
+	visibility: hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, 0.24);
+	font-family: arial;
+	font-size: 1.3em;
+}
+
+#tsk-pop div.tsk-box {
+	width: 300px;
+	margin: 100px auto;
+	background-color: #fff;
+	border: 1px solid #000;
+	padding: 15px;
+	text-align: left;
+	box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+
+
+#tsk-pop h2 {
+	margin: 0;
+	padding: 0;
+	}
+
+.tsk-btn-box {
+	text-align: center;
+	padding: 1em;
+	border-top: 1px solid #aaa;
+	}
+
+.tsk-btn {
+	border: 1px solid #aaa;
+	background-color: #aaa;
+	text-decoration: none;
+	padding: 0.3em 0.7em;
+	color: #fff;
+	margin-left: 1em;
+	}
+
+	

@@ -1,0 +1,22 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Complete";
+    Layout = "~/Views/Response/_layoutpublic.cshtml";
+}
+
+<div class="full-page container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+                <h1>@Model.CompleteTitle</h1>
+            </div>
+            <p>
+                @Html.Raw(@Model.CompleteMessage)
+            </p>
+            <hr />
+            <a class="btn btn-lg btn-success" href="@Model.EndUrl">Complete</a>
+        </div>
+    </div>
+</div>
+

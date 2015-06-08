@@ -1,0 +1,50 @@
+﻿@model TaskilyWeb.Models.Survey
+
+@{
+    ViewBag.Title = "Survey Popup Code";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="/admin/">My Taskily</a></li>
+            <li><a href="/survey/details/@Model.ID">@Model.Name</a></li>
+            <li>Popup</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        @Html.ContentBlob("taskily/survey/popup")
+    </div>
+
+    <div class="col-xs-12">
+
+        <textarea rows="22" cols="100" class="popup-code">
+<script>
+var options = {
+    id: '@Model.UID',
+    title: 'Hello',
+    msg: 'do you want to take our survey?',
+    freq: 10
+};
+loadtaskly(options);
+
+function loadtaskly(o) {
+    var s, r, t, d; r = false; d = '//taskily.azurewebsites.net/p/';
+    s = document.createElement('script'); s.type = 'text/javascript';
+    s.src = d + '/taskily-pop.js';
+    s.onload = s.onreadystatechange = function () {
+        if (!r && (!this.readyState || this.readyState == 'complete')) {
+            r = true; var tk = new tskly(); tk.init(o, d);
+        }
+    };
+    t = document.getElementsByTagName('script')[0];
+    t.parentNode.insertBefore(s, t);
+}
+</script>
+        </textarea>
+    </div>
+</div>

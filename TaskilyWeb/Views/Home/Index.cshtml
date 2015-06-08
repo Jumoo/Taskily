@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="homepage-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h1 class="logo">taskily <small>/ta:skɪli/</small></h1>
+                @Html.ContentBlob("/taskily/home/banner")
+            </div>
+            <!--
+            <div class="col-sm-4">
+                @Html.Partial("_loginBoxPartial")
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="sign-up-homepage-box">
+                @Html.Partial("_loginBoxPartial")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            @Html.ContentBlob("/taskily/home/test-survey")
+        </div>
+        <div class="col-md-4">
+            @Html.ContentBlob("/taskily/home/hosted")
+        </div>
+        <div class="col-md-4">
+            @Html.ContentBlob("/taskily/home/source")
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{7C9F95C5-9937-418C-8ADB-E434F9B67972}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{959B7AB9-7321-49C2-85E9-5BF1B97AD6A4}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\TaskilyWeb-WAWS-dev.json = PublishScripts\Configurations\TaskilyWeb-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumoo.Content.Markdown", "Jumoo.Content.Markdown\Jumoo.Content.Markdown.csproj", "{50B51BF7-5B70-4CE2-8142-1321E248BB04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskilyWeb", "TaskilyWeb\TaskilyWeb.csproj", "{7670D03D-BF27-4504-864B-BF850A7EACC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Taskily_Hosted|Any CPU = Taskily_Hosted|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50B51BF7-5B70-4CE2-8142-1321E248BB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B51BF7-5B70-4CE2-8142-1321E248BB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B51BF7-5B70-4CE2-8142-1321E248BB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B51BF7-5B70-4CE2-8142-1321E248BB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50B51BF7-5B70-4CE2-8142-1321E248BB04}.Taskily_Hosted|Any CPU.ActiveCfg = Taskily_Hosted|Any CPU
+		{50B51BF7-5B70-4CE2-8142-1321E248BB04}.Taskily_Hosted|Any CPU.Build.0 = Taskily_Hosted|Any CPU
+		{7670D03D-BF27-4504-864B-BF850A7EACC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7670D03D-BF27-4504-864B-BF850A7EACC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7670D03D-BF27-4504-864B-BF850A7EACC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7670D03D-BF27-4504-864B-BF850A7EACC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7670D03D-BF27-4504-864B-BF850A7EACC2}.Taskily_Hosted|Any CPU.ActiveCfg = Taskily_Hosted|Any CPU
+		{7670D03D-BF27-4504-864B-BF850A7EACC2}.Taskily_Hosted|Any CPU.Build.0 = Taskily_Hosted|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{959B7AB9-7321-49C2-85E9-5BF1B97AD6A4} = {7C9F95C5-9937-418C-8ADB-E434F9B67972}
+	EndGlobalSection
+EndGlobal
