@@ -27,6 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
     font-weight: normal;
     font-family: Pacifico;
+    font-size: 26px;
 }
 
 .jumoo, .logo { font-family: Pacifico; font-weight:normal; }
@@ -58,6 +59,7 @@ footer {
 
 .homepage-header p {
     margin-bottom: 2em;
+    font-size: 16pt;
 }
 
 .homepage-header h1 {
@@ -136,7 +138,12 @@ footer {
 div.sign-up-homepage-box {
     text-align: center;
     padding: 1em 0 4em;
-    color: #0288d1;
+    color: #112935;
+    margin-bottom: 1em;
+    background-color: skyblue;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 2px 5px rgba(0,0,0,.2);
 }
 
 .sign-up-homepage-box .btn {
