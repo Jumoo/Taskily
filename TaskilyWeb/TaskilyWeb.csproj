@@ -426,7 +426,6 @@
     <Content Include="Views\Response\draw.cshtml" />
     <Content Include="Views\Survey\Popup.cshtml" />
     <Content Include="Views\Upgrade\upgrade12345.cshtml" />
-    <Content Include="Views\Home\email.cshtml" />
     <None Include="Web.Taskily_Hosted.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
