@@ -13,6 +13,7 @@ using Owin;
 
 using TaskilyWeb.Models;
 using TaskilyWeb.DAL;
+using System.Diagnostics;
 
 namespace TaskilyWeb.Controllers
 {
@@ -119,6 +120,15 @@ namespace TaskilyWeb.Controllers
                     UserManager.Update(user);
 
                     DemoSurvey.CreateDemo(organisation.ID);
+
+                    try {
+                        var emailHelper = new Helpers.TaskilyEmailHelper();
+                        emailHelper.SendWelcomeEmail(model.Email);
+                    }
+                    catch(Exception ex)
+                    {
+                        Trace.TraceError("Error Sending Welcome Email: {0}", ex.ToString());
+                    }
 
                     await SignInAsync(user, isPersistent: false);
 
