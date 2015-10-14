@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -192,6 +193,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\TaskilyEmailHelper.cs" />
     <Compile Include="Migrations\201406231834131_InitalCreate.cs" />
     <Compile Include="Migrations\201406231834131_InitalCreate.Designer.cs">
       <DependentUpon>201406231834131_InitalCreate.cs</DependentUpon>
@@ -251,6 +253,9 @@
     <Content Include="App_Content\taskily\home\hosted.md" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\emails\expire.html" />
+    <Content Include="Content\emails\upgrade.html" />
+    <Content Include="Content\emails\welcome.html" />
     <Content Include="Content\public\taskily.css" />
     <Content Include="Content\TaskilyApp.css" />
     <Content Include="favicon.ico" />
@@ -421,6 +426,9 @@
     <Content Include="Views\Response\draw.cshtml" />
     <Content Include="Views\Survey\Popup.cshtml" />
     <Content Include="Views\Upgrade\upgrade12345.cshtml" />
+    <None Include="Web.Taskily_Hosted.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

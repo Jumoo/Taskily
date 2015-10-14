@@ -9,6 +9,7 @@ using TaskilyWeb.Models;
 
 namespace TaskilyWeb.Controllers
 {
+    [Authorize]
     public class DataController : Controller
     {
         TasklyDbContext db = new TasklyDbContext();
@@ -84,6 +85,24 @@ namespace TaskilyWeb.Controllers
             }
 
             return File(new System.Text.UTF8Encoding().GetBytes(results), "text/csv", survey.Name + "_" + DateTime.Now.ToString("ddMMyy_HHmm") + "_summary.csv");
+        }
+
+        public FileContentResult GetDraw(int id)
+        {
+            var survey = db.Surveys.Find(id);
+            if (!AdminSecurity.IsValidOrganisation(survey.OrganisationID))
+                return null;
+
+            var results = "Name,Email,OptIn\n"; 
+            if (survey.Draw)
+            {
+                foreach(var d in survey.Draws)
+                {
+                    results += d.Name + "," + d.Email + "," + d.contact +"\n";
+                }
+            }
+
+            return File(new System.Text.UTF8Encoding().GetBytes(results), "text/csv", survey.Name + "_" + DateTime.Now.ToString("ddMMyy_HHMM") + "_prizedraw.csv");
         }
     }
 }

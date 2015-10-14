@@ -186,12 +186,12 @@ namespace TaskilyWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Customize(
-            [Bind(Include="ID, WelcomeMessage, WelcomeTitle, CompleteMessage, CompleteTitle, EndUrl")]Survey survey)
+            [Bind(Include= "ID, OrganisationID, WelcomeMessage, WelcomeTitle, CompleteMessage, CompleteTitle, EndUrl")]Survey survey)
         {
             if ( ModelState.IsValid )
             {
                 if (!AdminSecurity.IsValidOrganisation(survey.OrganisationID))
-                    return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+                    return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Invalid Org " + survey.OrganisationID);
 
                 db.Surveys.Attach(survey);
 
