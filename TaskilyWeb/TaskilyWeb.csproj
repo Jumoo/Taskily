@@ -180,7 +180,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DataController.cs" />
-    <Compile Include="Controllers\DebugAndTestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\ResponseController.cs" />
@@ -429,9 +428,9 @@
     <Content Include="Views\Response\draw.cshtml" />
     <Content Include="Views\Survey\Popup.cshtml" />
     <Content Include="Views\Upgrade\upgrade12345.cshtml" />
-    <Content Include="Views\DebugAndTest\Index.cshtml" />
     <None Include="Web.Taskily_Hosted.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
