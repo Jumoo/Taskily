@@ -18,7 +18,10 @@ namespace TaskilyWeb.Helpers
 
         public void SendUpgradeEmail(string to)
         {
-            SendEmail(to, "Tanks for upgrading taskily", "~/content/emails/upgrade.html", new Dictionary<string, string>());
+            SendEmail(to, "Thanks for upgrading taskily", "~/content/emails/upgrade.html", new Dictionary<string, string>());
+            SendEmail("kevin@jumoo.co.uk", 
+                string.Format("{0} just upgraded taskily.", to)
+                , "~/content/emails/upgrade.html", new Dictionary<string, string>());
         }
 
         public void SendExpireEmail(string to, DateTime expiry)
@@ -33,6 +36,7 @@ namespace TaskilyWeb.Helpers
             // replacements everytime...
             replacements.Add("{{to}}", to);
             replacements.Add("{{subject}}", subject);
+            replacements.Add("{{date}}", DateTime.Now.ToString("dddd dd MMMM yyyy"));
             
             // name of the user 
             replacements.Add("{{user}}", HttpContext.Current.User.Identity.Name);

@@ -1,7 +1,7 @@
-﻿<div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+﻿<div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:14pt;">
     
     <img src="http://jumoo.uk/assets/taskily_sm.png" alt="taskily" width="86" height="46" />
-    <div style="padding-bottom: 1em;clear:both;">
+    <div style="padding-bottom: 1em;clear:both; max-width: 500px;">
         <h2>Your Taskily standard subscription is ready!</h2>
         <p>
             Hi,
@@ -12,30 +12,33 @@
                 You can now run up to 5 surveys, all with unlimited responses.
             </p>
 
-            <strong>Receipt:</strong>
-            <table cellpadding="5px" cellspacing="0">
-                <tr>
-                    <td style="border-bottom:1px solid black;">Item</td>
-                    <td style="border-bottom:1px solid black;border-left:1px solid black;">Cost</tdstyle="border-bottom:1px>
-                </tr>
-                <tr>
-                    <td>Taskily Standard Subscription (1 year)</td>
-                    <td style="border-left:1px solid black;">£100</td>
-                </tr>
-                <tr>
-                    <td><small><em>(VAT inclusive, calculated at your national rate)</em></small></td>
-                    <td style="border-left:1px solid black;">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;font-weight:bold;">Total</td>
-                    <td style="border-left:1px solid black;font-weight:bold;">£100</td>
-                </tr>
-            </table>
+            
+            <strong>Receipt: {{date}}</strong>
+            <center>
+                <table cellpadding="10px" cellspacing="0">
+                    <tr>
+                        <td style="border-bottom:1px solid black;">Item</td>
+                        <td style="border-bottom:1px solid black;border-left:1px solid black;">Cost</td>
+                    </tr>
+                    <tr>
+                        <td>Taskily Standard Subscription (1 year)</td>
+                        <td style="border-left:1px solid black;">£100</td>
+                    </tr>
+                    <tr>
+                        <td><small><em>(VAT inclusive, calculated at your national rate)</em></small></td>
+                        <td style="border-left:1px solid black;">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right;font-weight:bold;border-top:1px solid #ddd;">Total</td>
+                        <td style="border-left:1px solid black;font-weight:bold;border-top:1px solid #ddd;">£100</td>
+                    </tr>
+                </table>
+            </center>
             <p>
-                <em>
+                <em style="font-size:10pt;">
                     A standard subscription will last for 1 year, after which time it will be downgraded
                     to a free account. When this happens, you won't lose any data, but you might not be
-                    able to accept any more survey responses from that time. Most people use Taskily for
+                    able to accept any more survey responses from that time.</p><p>Most people use Taskily for
                     a few months, gather the information they need, and are then quite happy to let their
                     subscription expire. If you find you need it for longer than that, just upgrade again!
                 </em>
